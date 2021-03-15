@@ -111,7 +111,7 @@ def get_bound_ligand_from_pdb(pdb_id):
         else:
             split_structures = Chem.GetMolFrags(rd_mol,asMols=True)
             if template.GetNumAtoms() == split_structures[0].GetNumAtoms():
-                mol_w_bond_orders = AllChem.AssignBondOrdersFromTemplate(template, rs[0])
+                mol_w_bond_orders = AllChem.AssignBondOrdersFromTemplate(template, split_structures[0])
                 mol = AllChem.AddHs(mol_w_bond_orders, addCoords=True)
                 extracted_ligands['ligand_code'][ligand_code] = {'rdkmol_obj':mol}
             else:
